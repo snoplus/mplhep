@@ -29,7 +29,12 @@ collaboration requirements (ROOT-like plots for CMS, ATLAS, LHCb, ALICE).
 ## Installation
 
 ```bash
-pip install mplhep
+pip install git+https://github.com/snoplus/mplhep.git
+```
+
+If you use SSH key authentication with GitHub, use
+```bash
+pip install git+ssh://git@github.com/snoplus/mplhep.git
 ```
 
 ## Documentation and Getting Started
