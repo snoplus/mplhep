@@ -64,8 +64,14 @@ def legend(ax: Axes | None = None, **kwargs) -> Legend:
                 color = color[0]
 
         if color is not None:
+            linestyle = (
+                handle.get_linestyle()
+                if hasattr(handle, "get_linestyle")
+                else "-"
+            )
             new_handle = mpl.lines.Line2D(
-                [0], [0], color=color, lw=rcParams["lines.linewidth"]
+                [0], [0], color=color, lw=rcParams["lines.linewidth"],
+                linestyle=linestyle
             )
             new_handles.append(new_handle)
         else:
