@@ -18,25 +18,29 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    - uses: astral-sh/setup-uv@v8.2.0
+    - uses: astral-sh/setup-uv@v10.0.1
       with:
         activate-environment: true
         version: "latest"
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Install core fonts
       if: runner.os == 'Linux'
       run: |
+        set -euo pipefail
         echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-        sudo apt-get install ttf-mscorefonts-installer
-
-    - name: List available fonts
-      if: runner.os == 'Linux'
-      run: fc-list | grep -i microsoft || fc-list | grep -i "times new" || echo "Microsoft fonts listing complete"
+        sudo apt-get update -y
+        sudo apt-get install -y ttf-mscorefonts-installer
+        fc-cache -fv
+        if ! fc-list | grep -qi "times new roman"; then
+          echo "ERROR: Times New Roman font not found after installation." >&2
+          exit 1
+        fi
+        echo "Times New Roman font verified successfully."
 
     - name: Install dependencies
       run: |
@@ -70,25 +74,29 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    - uses: astral-sh/setup-uv@v8.2.0
+    - uses: astral-sh/setup-uv@v10.0.1
       with:
         activate-environment: true
         version: "latest"
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Install core fonts
       if: runner.os == 'Linux'
       run: |
+        set -euo pipefail
         echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-        sudo apt-get install ttf-mscorefonts-installer
-
-    - name: List available fonts
-      if: runner.os == 'Linux'
-      run: fc-list | grep -i microsoft || fc-list | grep -i "times new" || echo "Microsoft fonts listing complete"
+        sudo apt-get update -y
+        sudo apt-get install -y ttf-mscorefonts-installer
+        fc-cache -fv
+        if ! fc-list | grep -qi "times new roman"; then
+          echo "ERROR: Times New Roman font not found after installation." >&2
+          exit 1
+        fi
+        echo "Times New Roman font verified successfully."
 
     - name: Install dependencies
       run: |
@@ -128,25 +136,29 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    - uses: astral-sh/setup-uv@v8.2.0
+    - uses: astral-sh/setup-uv@v10.0.1
       with:
         activate-environment: true
         version: "latest"
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Install core fonts
       if: runner.os == 'Linux'
       run: |
+        set -euo pipefail
         echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-        sudo apt-get install ttf-mscorefonts-installer
-
-    - name: List available fonts
-      if: runner.os == 'Linux'
-      run: fc-list | grep -i microsoft || fc-list | grep -i "times new" || echo "Microsoft fonts listing complete"
+        sudo apt-get update -y
+        sudo apt-get install -y ttf-mscorefonts-installer
+        fc-cache -fv
+        if ! fc-list | grep -qi "times new roman"; then
+          echo "ERROR: Times New Roman font not found after installation." >&2
+          exit 1
+        fi
+        echo "Times New Roman font verified successfully."
 
     - name: Install dependencies
       run: |
@@ -182,25 +194,29 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    - uses: astral-sh/setup-uv@v8.2.0
+    - uses: astral-sh/setup-uv@v10.0.1
       with:
         activate-environment: true
         version: "latest"
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Install core fonts
       if: runner.os == 'Linux'
       run: |
+        set -euo pipefail
         echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-        sudo apt-get install ttf-mscorefonts-installer
-
-    - name: List available fonts
-      if: runner.os == 'Linux'
-      run: fc-list | grep -i microsoft || fc-list | grep -i "times new" || echo "Microsoft fonts listing complete"
+        sudo apt-get update -y
+        sudo apt-get install -y ttf-mscorefonts-installer
+        fc-cache -fv
+        if ! fc-list | grep -qi "times new roman"; then
+          echo "ERROR: Times New Roman font not found after installation." >&2
+          exit 1
+        fi
+        echo "Times New Roman font verified successfully."
 
     - name: Install dependencies
       run: |
